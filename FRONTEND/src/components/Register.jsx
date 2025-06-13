@@ -20,7 +20,7 @@ function Register() {
             if(response.data.status){
                 localStorage.setItem("username", username);
                 alert("Registered successfully!");
-                navigate('/login')
+                navigate('/login' , { state: { username } })
             }
         }).catch(err => {
             console.log(err)
