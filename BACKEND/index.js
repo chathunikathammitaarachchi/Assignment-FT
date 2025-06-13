@@ -5,7 +5,8 @@ import cors from 'cors'
 import cookieParser from 'cookie-parser'
 
 dotnev.config()
-
+import { UserRouter } from './routes/user.js'
+import { ProductRouter } from './routes/product.js'
 
 const app = express()
 app.use(express.json())
@@ -14,9 +15,10 @@ app.use(cors({
     credentials: true
 }))
 app.use(cookieParser())
+app.use('/auth',UserRouter)
+app.use('/api',ProductRouter)
 
-
-mongoose.connect('mongodb://localhost:27017/auditorium_management')
+mongoose.connect('mongodb://localhost:27017/user_management')
 
 app.listen(process.env.PORT, () => {
     console.log("Server is running")
